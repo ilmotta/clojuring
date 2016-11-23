@@ -52,5 +52,23 @@
 (assert (= false (validate validators {:name "" :glitter-index 0})))
 (assert (= true (validate validators {:name "Icaro" :glitter-index 0})))
 
+(defn to-col
+  [coll]
+  (clojure.string/join "," coll))
+
+(defn to-rows
+  [coll]
+  (clojure.string/join "\n" coll))
+
+(defn to-csv
+  [coll]
+  (to-rows (reduce #(conj %1 (to-col %2))
+                   []
+                   (map vals coll))))
+
+(def suspects (mapify (parse (slurp filename))))
+
+(assert (= "Edward Cullen,10\nBella Swan,0" (to-csv (take 2 suspects))))
+
 (defn -main
   [& args])
