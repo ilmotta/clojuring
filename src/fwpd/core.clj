@@ -12,6 +12,9 @@
 (def conversions {:name identity
                   :glitter-index str->int})
 
+(def validators {:name (complement clojure.string/blank?)
+                 :glitter-index #(>= % 0)})
+
 (defn convert
   [vamp-key value]
   ((get conversions vamp-key) value))
@@ -36,13 +39,18 @@
   [minimum-glitter records]
   (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
 
-(def suspects (mapify (parse (slurp filename))))
-
 (defn append
   [coll & args]
   (apply concat coll args))
 
-(println (append suspects [{:name "Icaro" :glitter-index -1}]))
+(defn validate
+  [validators record]
+  (every? #((get validators %) (get record %))
+          (keys validators)))
+
+(assert (= false (validate validators {:name "Icaro" :glitter-index -1})))
+(assert (= false (validate validators {:name "" :glitter-index 0})))
+(assert (= true (validate validators {:name "Icaro" :glitter-index 0})))
 
 (defn -main
   [& args])
