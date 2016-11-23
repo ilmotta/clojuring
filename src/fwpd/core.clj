@@ -33,6 +33,6 @@
 
 (defn glitter-filter
   [minimum-glitter records]
-  (filter #(>= (:glitter-index %) minimum-glitter) records))
+  (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
 
 (glitter-filter 3 (mapify (parse (slurp filename))))
