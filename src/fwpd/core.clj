@@ -1,4 +1,5 @@
-(ns fwpd.core)
+(ns fwpd.core
+  (:gen-class))
 
 (def filename "suspects.csv")
 
@@ -35,4 +36,13 @@
   [minimum-glitter records]
   (map :name (filter #(>= (:glitter-index %) minimum-glitter) records)))
 
-(glitter-filter 3 (mapify (parse (slurp filename))))
+(def suspects (mapify (parse (slurp filename))))
+
+(defn append
+  [coll & args]
+  (apply concat coll args))
+
+(println (append suspects [{:name "Icaro" :glitter-index -1}]))
+
+(defn -main
+  [& args])
