@@ -1,6 +1,6 @@
-(ns fwpd.core-test
+(ns brave.core-test
   (:require [clojure.test :refer :all]
-            [fwpd.core :refer :all]))
+            [brave.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

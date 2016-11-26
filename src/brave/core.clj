@@ -1,5 +1,5 @@
-(ns fwpd.core
-  (:require [fwpd.visualization.svg :as svg])
+(ns brave.core
+  (:require [brave.visualization.svg :as svg])
   (:gen-class))
 
 (def filename "suspects.csv")

@@ -1,4 +1,4 @@
-(ns fwpd.visualization.svg)
+(ns brave.visualization.svg)
 
 (defn latlng->point
   "Convert lat/lng map to comma-separated string"
