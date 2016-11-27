@@ -37,6 +37,5 @@
   (set (apply map args)))
 
 (defn attr
-  "returns the characters attribute"
   [property]
   (comp property :attributes))
