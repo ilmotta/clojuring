@@ -6,5 +6,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]]
   :main ^:skip-aot brave.core
   :target-path "target/%s"
-  :plugins [[lein-auto "0.1.3"]]
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}
+             :dev {:plugins [[lein-expectations "0.0.7"]
+                             [lein-auto "0.1.3"]]
+                   :dependencies [[expectations "2.1.8"]]}})
