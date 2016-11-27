@@ -1,47 +1,42 @@
 (ns brave.chapter4.index-test
-  (:require [clojure.test :refer :all]
-            [brave.chapter4.index :refer :all]))
+  (:use expectations brave.chapter4.index))
 
-(deftest fn-validate
-  (testing "validates any given suspect with validators map"
-    (let [validators {:name (complement clojure.string/blank?)
-                      :glitter-index #(>= % 0)}]
-      (are [name index]
-           (= false (validate validators {:name name :glitter-index index}))
-           "Trix" -1
-           "" 0
-           "   " 10)
-      (are [name index]
-           (= true (validate validators {:name name :glitter-index index}))
-           "Icaro" 0))))
+; Validates any given suspect with validators map
+(let [validators {:name (complement clojure.string/blank?)
+                  :glitter-index #(>= % 0)}]
+  (expect false (from-each [suspect [{:name "Trix" :glitter-index -1}
+                                     {:name "" :glitter-index -1}
+                                     {:name "   " :glitter-index 10}]]
+                           (validate validators suspect)))
+  (expect true (from-each [suspect [{:name "Icaro" :glitter-index 0}
+                                    {:name "Noob" :glitter-index 100}]]
+                          (validate validators suspect))))
 
-(deftest fn-to-csv
-  (testing "converts suspects seq of maps back to CSV"
-    (let [filename "test/brave/fixtures/suspects.csv"
-          suspects (mapify (parse (slurp filename)))]
-      (is (= "Edward Cullen,10\nBella Swan,0" (to-csv (take 2 suspects)))))))
+; Converts suspects seq of maps back to CSV
+(let [filename "test/brave/fixtures/suspects.csv"
+      suspects (mapify (parse (slurp filename)))]
+  (expect "Edward Cullen,10\nBella Swan,0"
+          (to-csv (take 2 suspects))))
 
-(deftest fn-convert
-  (testing ":name conversion returns itself"
-    (is (= (convert :name "Julie") "Julie")))
-  (testing ":glitter-index converts to int"
-    (is (= (convert :glitter-index "-1") -1))
-    (is (= (convert :glitter-index "2") 2))
-    (is (= (convert :glitter-index "0") 0))))
+; :name converter returns itself
+(expect "Julie" (convert :name "Julie"))
 
-(deftest fn-parse
-  (testing "converts CSV into rows of columns"
-    (is (= (parse "col00,col01\ncol10,col11")
-           '(["col00" "col01"] ["col10" "col11"])))))
+; :glitter-index converts to int
+(expect -1 (convert :glitter-index "-1"))
+(expect 2 (convert :glitter-index "2"))
+(expect 0 (convert :glitter-index "0"))
 
-(deftest fn-mapify
-  (testing "returns a seq of maps"
-    (is (= (mapify [["Edward Cullen" "10"] ["Bella Swan" "0"]])
-           [{:name "Edward Cullen" :glitter-index 10}
-            {:name "Bella Swan" :glitter-index 0}]))))
+; Converts CSV into rows of columns
+(expect '(["col00" "col01"] ["col10" "col11"])
+        (parse "col00,col01\ncol10,col11"))
 
-(deftest fn-append
-  (testing "throws if new element is not a collection"
-    (is (thrown? IllegalArgumentException (doall (append [] 0)))))
-  (testing "adds elements to the end of collection"
-    (is (= (append [0 1] [2]) [0 1 2]))))
+; Returns a seq of maps"
+(expect [{:name "Edward Cullen" :glitter-index 10}
+         {:name "Bella Swan" :glitter-index 0}]
+        (mapify [["Edward Cullen" "10"] ["Bella Swan" "0"]]))
+
+; Throws if new element is not a collection
+(expect IllegalArgumentException (doall (append [] 0)))
+
+; Adds elements to the end of collection
+(expect [0 1 2] (append [0 1] [2]))
