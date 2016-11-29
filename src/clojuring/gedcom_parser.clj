@@ -1,4 +1,5 @@
-(ns clojuring.gedcom-parser)
+(ns clojuring.gedcom-parser
+  (:require [clojure.string :as string]))
 
 (defn- surround-start
   [{:keys [type id]}]
@@ -16,3 +17,14 @@
    (str (surround-start props)
         content
         (surround-end (:type props)))))
+
+(defn line-with-id?
+  [input]
+  (boolean (re-find #"\s@.+@\s" input)))
+
+(defn parse-line
+  [line]
+  (if (line-with-id? line)
+    (let [[level id type] (string/split line #" ")]
+      (list 'clojuring.gedcom-parser/tag {:type (string/lower-case type) :id id}))
+    line))

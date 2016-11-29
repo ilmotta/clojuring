@@ -14,3 +14,13 @@
 
 (expect (tag {:type "indi" :id "@ID@"})
         "<indi id=\"@ID@\"></indi>")
+
+(expect true (line-with-id? "0 @ID@ type"))
+(expect true (line-with-id? "0   @ID@    type"))
+(expect false (line-with-id? "0 ID@ type"))
+(expect false (line-with-id? "0 ID type"))
+(expect false (line-with-id? "0 @ID@type"))
+
+; Parse line with ID
+(expect "<indi id=\"@I1@\"></indi>"
+        (eval (parse-line "0 @I1@ INDI")))
