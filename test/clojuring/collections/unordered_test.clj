@@ -1,6 +1,6 @@
-(ns brave.collections.unordered-test
+(ns clojuring.collections.unordered-test
   (:use expectations)
-  (:require [brave.collections.unordered :refer :all]))
+  (:require [clojuring.collections.unordered :refer :all]))
 
 (def players #{"Alice" "Bob"})
 

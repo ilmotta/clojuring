@@ -1,4 +1,4 @@
-(ns brave.collections.unordered)
+(ns clojuring.collections.unordered)
 
 (defn next-round
   [game]

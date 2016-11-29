@@ -1,6 +1,6 @@
-(ns brave.collections.ordered-test
+(ns clojuring.collections.ordered-test
   (:use expectations)
-  (:require [brave.collections.ordered :refer :all]))
+  (:require [clojuring.collections.ordered :refer :all]))
 
 ; Vectors can be accessed by index
 (expect 99 (get ["abc" false 99] 2))

@@ -1,10 +1,10 @@
-(defproject fwpd "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+(defproject clojuring "0.1.0-SNAPSHOT"
+  :description "My personal cave for learning Clojure"
+  :url "https://github.com/ilmotta/clojuring"
+  :license {:name "MIT"
+            :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.8.0"]]
-  :main ^:skip-aot brave.core
+  :main ^:skip-aot clojuring.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
              :dev {:plugins [[lein-kibit "0.1.3"]

@@ -1,4 +1,4 @@
-(ns brave.core
+(ns clojuring.core
   (:gen-class))
 
 (defn -main

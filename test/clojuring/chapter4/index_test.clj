@@ -1,5 +1,5 @@
-(ns brave.chapter4.index-test
-  (:use expectations brave.chapter4.index))
+(ns clojuring.chapter4.index-test
+  (:use expectations clojuring.chapter4.index))
 
 ; Validates any given suspect with validators map
 (let [validators {:name (complement clojure.string/blank?)
@@ -13,7 +13,7 @@
                           (validate validators suspect))))
 
 ; Converts suspects seq of maps back to CSV
-(let [filename "test/brave/fixtures/suspects.csv"
+(let [filename "test/clojuring/fixtures/suspects.csv"
       suspects (mapify (parse (slurp filename)))]
   (expect "Edward Cullen,10\nBella Swan,0"
           (to-csv (take 2 suspects))))

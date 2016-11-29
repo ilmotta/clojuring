@@ -1,4 +1,4 @@
-(ns brave.chapter5.index)
+(ns clojuring.chapter5.index)
 
 (def not-empty? (complement empty?))
 
