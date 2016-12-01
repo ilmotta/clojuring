@@ -1,6 +1,5 @@
-(ns clojuring.collections.ordered-test
-  (:use expectations)
-  (:require [clojuring.collections.ordered :refer :all]))
+(ns clojuring.seqs.ordered-test
+  (:use expectations clojuring.seqs.ordered))
 
 ; Vectors can be accessed by index
 (expect 99 (get ["abc" false 99] 2))

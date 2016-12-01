@@ -1,4 +1,4 @@
-(ns clojuring.collections.unordered)
+(ns clojuring.seqs.unordered)
 
 (defn next-round
   [game]

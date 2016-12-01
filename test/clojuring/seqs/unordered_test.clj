@@ -1,6 +1,5 @@
-(ns clojuring.collections.unordered-test
-  (:use expectations)
-  (:require [clojuring.collections.unordered :refer :all]))
+(ns clojuring.seqs.unordered-test
+  (:use expectations clojuring.seqs.unordered))
 
 (def players #{"Alice" "Bob"})
 
