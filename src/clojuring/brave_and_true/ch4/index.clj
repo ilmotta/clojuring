@@ -1,4 +1,4 @@
-(ns clojuring.chapter4.index)
+(ns clojuring.brave-and-true.ch4.index)
 
 (defn str->int
   [str]

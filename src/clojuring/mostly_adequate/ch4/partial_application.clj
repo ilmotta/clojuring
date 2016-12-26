@@ -1,4 +1,4 @@
-(ns clojuring.partial-application
+(ns clojuring.mostly-adequate.ch4.partial-application
   (:require [clojure.string :as string]))
 
 ; Exercise 1

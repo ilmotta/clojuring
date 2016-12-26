@@ -1,4 +1,4 @@
-(ns clojuring.composition)
+(ns clojuring.mostly-adequate.ch5.composition)
 
 ; Exercise 1
 ; ==========

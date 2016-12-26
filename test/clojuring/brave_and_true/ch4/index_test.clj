@@ -1,5 +1,5 @@
-(ns clojuring.chapter4.index-test
-  (:use expectations clojuring.chapter4.index))
+(ns clojuring.brave-and-true.ch4.index-test
+  (:use expectations clojuring.brave-and-true.ch4.index))
 
 ; Validates any given suspect with validators map
 (let [validators {:name (complement clojure.string/blank?)

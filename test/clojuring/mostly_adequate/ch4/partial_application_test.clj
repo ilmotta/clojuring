@@ -1,5 +1,5 @@
-(ns clojuring.partial-application-test
-  (:use expectations clojuring.partial-application)
+(ns clojuring.mostly-adequate.ch4.partial-application-test
+  (:use expectations clojuring.mostly-adequate.ch4.partial-application)
   (:require [clojure.string :as string]))
 
 (expect ["a" "b"] (words-original "a b"))

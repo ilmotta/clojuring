@@ -1,6 +1,6 @@
-(ns clojuring.chapter5.index-test
+(ns clojuring.brave-and-true.ch5.index-test
   (:require [clojure.test :refer :all]
-            [clojuring.chapter5.index :refer :all]))
+            [clojuring.brave-and-true.ch5.index :refer :all]))
 
 (deftest fn-pipe3
   (testing "pipes three function calls"

@@ -1,5 +1,5 @@
-(ns clojuring.composition-test
-  (:use expectations clojuring.composition))
+(ns clojuring.mostly-adequate.ch5.composition-test
+  (:use expectations clojuring.mostly-adequate.ch5.composition))
 
 ; Example data
 (def cars

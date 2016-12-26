@@ -1,4 +1,4 @@
-(ns clojuring.chapter6.visualization.svg)
+(ns clojuring.brave-and-true.ch6.visualization.svg)
 
 (defn latlng->point
   "Convert lat/lng map to comma-separated string"
