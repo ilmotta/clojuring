@@ -3,8 +3,11 @@
   :url "https://github.com/ilmotta/clojuring"
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
-  :dependencies [[org.clojure/clojure "1.8.0"]]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
+                 [org.clojure/data.csv "0.1.2"]]
   :main ^:skip-aot clojuring.core
+  :jvm-opts ^:replace ["-server" "-Xmx4g"]
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
              :dev {:plugins [[lein-kibit "0.1.3"]
